@@ -2,7 +2,7 @@
   "name": "mood-vibrations",
   "version": "1.0.0",
   "description": "Mood Vibrations uses artificial intelligence to recommend background music or sounds that satisfy a user's provided mood.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
