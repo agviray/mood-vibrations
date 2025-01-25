@@ -1,7 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const App = () => {
   const [userMood, setUserMood] = useState('');
+
+  useEffect(() => {
+    testFrontAndBackEnd();
+  }, []);
+
+  const testFrontAndBackEnd = async () => {
+    const response = await axios.get('http://localhost:3000/');
+    console.log(response.data.greeting);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
