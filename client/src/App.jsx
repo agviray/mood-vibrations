@@ -1,20 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 const App = () => {
   const [userMood, setUserMood] = useState('');
+  const [recommendation, setRecommendation] = useState('');
 
-  useEffect(() => {
-    testFrontAndBackEnd();
-  }, []);
-
-  const testFrontAndBackEnd = async () => {
-    const response = await axios.get('http://localhost:3000/');
-    console.log(response.data.greeting);
-  };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    const response = await axios.post('http://localhost:3000/analyze-mood', {
+      userMood: userMood,
+    });
+    setUserMood('');
+    setRecommendation(response.data.recommendation);
   };
 
   return (
@@ -26,12 +23,14 @@ const App = () => {
             type="text"
             value={userMood}
             onChange={(event) => setUserMood(event.target.value)}
+            placeholder="Enter your mood..."
           />
           <button type="submit">Submit Mood</button>
         </form>
       </div>
       <div id="recommendation">
-        {/* Display music/sound recommendation here */}
+        <h2>Recommendation</h2>
+        {recommendation ? <p> {recommendation}</p> : null}
       </div>
     </>
   );
