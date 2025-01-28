@@ -1,22 +1,23 @@
 import { useState } from 'react';
-import UserInputForm from './components/UserMoodForm';
+import UserTextForm from './components/UserTextForm';
 
 const App = () => {
-  const [recommendation, setRecommendation] = useState('');
+  const [userMood, setUserMood] = useState('');
 
-  const onRecommendationChange = (recommended) => {
-    setRecommendation(recommended);
+  const onUserMoodChange = async (determinedMood) => {
+    const mood = await determinedMood;
+    setUserMood(mood);
   };
 
   return (
     <>
       <h1>Mood Vibrations</h1>
-      <UserInputForm onRecommendationChange={onRecommendationChange} />
-      <div id="recommendation">
-        {recommendation ? (
+      <UserTextForm onUserMoodChange={onUserMoodChange} />
+      <div id="userMood">
+        {userMood ? (
           <>
             <h2>Recommended:</h2>
-            <p>{recommendation}</p>
+            <p>{userMood}</p>
           </>
         ) : null}
       </div>
