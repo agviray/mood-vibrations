@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import UserTextForm from './components/UserTextForm';
+import AiResponse from './components/AIResponse';
 
 const App = () => {
   const [moodMessage, setMoodMessage] = useState('');
@@ -21,16 +22,9 @@ const App = () => {
         onMoodMessageChange={onMoodMessageChange}
         onUserMoodChange={onUserMoodChange}
       />
-      <div id="userMood">
-        {moodMessage && userMood ? (
-          <>
-            <h2>Mood Message:</h2>
-            <p>{moodMessage}</p>
-            <h2>Mood:</h2>
-            <p>{userMood}</p>
-          </>
-        ) : null}
-      </div>
+      {moodMessage && userMood ? (
+        <AiResponse moodMessage={moodMessage} userMood={userMood} />
+      ) : null}
     </>
   );
 };
