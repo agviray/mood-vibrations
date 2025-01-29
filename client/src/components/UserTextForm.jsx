@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { StyledUserTextForm } from './styles/StyledUserTextForm.styled';
 
 const UserInputForm = ({ onAiResponseChange }) => {
   const [userText, setUserText] = useState('');
@@ -28,16 +29,17 @@ const UserInputForm = ({ onAiResponseChange }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <StyledUserTextForm onSubmit={handleSubmit}>
         <textarea
           value={userText}
           onChange={(event) => setUserText(event.target.value)}
           placeholder="Describe your mood or feelings..."
           rows={1}
           cols={30}
+          maxLength={100}
         ></textarea>
         <button type="submit">Submit</button>
-      </form>
+      </StyledUserTextForm>
     </>
   );
 };

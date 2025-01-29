@@ -8,11 +8,5 @@
 body {
   min-width: 350px;
   margin: 0 auto;
-}
-
-textarea {
-  padding: 0.5rem 0.75rem;
-  width: 100%;
-  resize: vertical;
-  outline: none;
+  color: #333333;
 }
