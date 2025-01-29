@@ -7,13 +7,12 @@
 
 body {
   min-width: 350px;
-  max-width: 1200px;
+  margin: 0 auto;
 }
 
 textarea {
   padding: 0.5rem 0.75rem;
   width: 100%;
-  max-width: 600px;
-  resize: none;
+  resize: vertical;
   outline: none;
 }

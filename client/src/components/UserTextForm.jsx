@@ -27,18 +27,18 @@ const UserInputForm = ({ onAiResponseChange }) => {
   };
 
   return (
-    <div>
+    <>
       <form onSubmit={handleSubmit}>
         <textarea
           value={userText}
           onChange={(event) => setUserText(event.target.value)}
           placeholder="Describe your mood or feelings..."
-          rows={10}
+          rows={1}
           cols={30}
         ></textarea>
         <button type="submit">Submit</button>
       </form>
-    </div>
+    </>
   );
 };
 

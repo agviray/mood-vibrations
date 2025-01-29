@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import UserTextForm from './components/UserTextForm';
 import AiResponse from './components/AIResponse';
+import { StyledAppContainer } from './components/styles/App.styled';
 
 const App = () => {
   const [aiResponse, setAiResponse] = useState({
@@ -18,13 +19,15 @@ const App = () => {
   };
 
   return (
-    <>
-      <h1>Mood Vibrations</h1>
-      <UserTextForm onAiResponseChange={onAiResponseChange} />
-      {moodMessage && userMood ? (
-        <AiResponse moodMessage={moodMessage} userMood={userMood} />
-      ) : null}
-    </>
+    <StyledAppContainer>
+      <div>
+        <h1>Mood Vibrations</h1>
+        <UserTextForm onAiResponseChange={onAiResponseChange} />
+        {moodMessage && userMood ? (
+          <AiResponse moodMessage={moodMessage} userMood={userMood} />
+        ) : null}
+      </div>
+    </StyledAppContainer>
   );
 };
 
