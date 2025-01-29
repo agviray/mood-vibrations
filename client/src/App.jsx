@@ -3,25 +3,24 @@ import UserTextForm from './components/UserTextForm';
 import AiResponse from './components/AIResponse';
 
 const App = () => {
-  const [moodMessage, setMoodMessage] = useState('');
-  const [userMood, setUserMood] = useState('');
+  const [aiResponse, setAiResponse] = useState({
+    moodMessage: '',
+    userMood: '',
+  });
+  const { moodMessage, userMood } = aiResponse;
 
-  const onMoodMessageChange = (moodMessage) => {
-    const message = moodMessage;
-    setMoodMessage(message);
-  };
-  const onUserMoodChange = (determinedMood) => {
-    const mood = determinedMood;
-    setUserMood(mood);
+  const onAiResponseChange = (aiResponseDetails) => {
+    const { moodMessage, mood } = aiResponseDetails;
+    setAiResponse({
+      moodMessage: moodMessage,
+      userMood: mood,
+    });
   };
 
   return (
     <>
       <h1>Mood Vibrations</h1>
-      <UserTextForm
-        onMoodMessageChange={onMoodMessageChange}
-        onUserMoodChange={onUserMoodChange}
-      />
+      <UserTextForm onAiResponseChange={onAiResponseChange} />
       {moodMessage && userMood ? (
         <AiResponse moodMessage={moodMessage} userMood={userMood} />
       ) : null}

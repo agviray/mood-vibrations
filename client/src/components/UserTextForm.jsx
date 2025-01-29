@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-const UserInputForm = ({ onMoodMessageChange, onUserMoodChange }) => {
+const UserInputForm = ({ onAiResponseChange }) => {
   const [userText, setUserText] = useState('');
 
   const handleSubmit = async (event) => {
@@ -19,8 +19,7 @@ const UserInputForm = ({ onMoodMessageChange, onUserMoodChange }) => {
       );
       setUserText('');
       if (response.data && response.data.moodMessage && response.data.mood) {
-        onMoodMessageChange(response.data.moodMessage);
-        onUserMoodChange(response.data.mood);
+        onAiResponseChange(response.data);
       }
     } catch (error) {
       console.error('Error analyzing mood:', error);
@@ -44,8 +43,7 @@ const UserInputForm = ({ onMoodMessageChange, onUserMoodChange }) => {
 };
 
 UserInputForm.propTypes = {
-  onMoodMessageChange: PropTypes.func.isRequired,
-  onUserMoodChange: PropTypes.func.isRequired,
+  onAiResponseChange: PropTypes.func.isRequired,
 };
 
 export default UserInputForm;
