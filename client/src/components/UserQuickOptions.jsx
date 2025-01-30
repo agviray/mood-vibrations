@@ -1,16 +1,39 @@
 import { StyledUserQuickOptions } from './styles/UserQuickOptions.styled';
+
+const options = [
+  { option: 'excited' },
+  { option: 'chill' },
+  { option: 'energetic' },
+  { option: 'studious' },
+  { option: 'romantic' },
+  { option: 'confused' },
+  { option: 'mysterious' },
+  { option: 'happy' },
+  { option: 'daring' },
+  { option: 'melancholic' },
+  { option: 'sneaky' },
+  { option: 'hopeful' },
+  { option: 'exhausted' },
+  { option: 'heartbroken' },
+  { option: 'focused' },
+  { option: 'aggressive' },
+  { option: 'indifferent' },
+];
+
 const UserQuickOptions = () => {
+  const renderOptions = () => {
+    return options.map((option, index) => {
+      return (
+        <div key={index} onClick={() => console.log(option.option)}>
+          {option.option}
+        </div>
+      );
+    });
+  };
+
   return (
     <StyledUserQuickOptions>
-      <div>
-        <h2>Quick Options</h2>
-        <div>Option</div>
-        <div>Option</div>
-        <div>Option</div>
-        <div>Option</div>
-        <div>Option</div>
-        <div>Option</div>
-      </div>
+      <div>{renderOptions()}</div>
     </StyledUserQuickOptions>
   );
 };
