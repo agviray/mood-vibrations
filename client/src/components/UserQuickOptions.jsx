@@ -1,4 +1,7 @@
-import { StyledUserQuickOptions } from './styles/UserQuickOptions.styled';
+import {
+  StyledUserQuickOptions,
+  StyledUserOption,
+} from './styles/UserQuickOptions.styled';
 
 const options = [
   { option: 'excited' },
@@ -24,9 +27,12 @@ const UserQuickOptions = () => {
   const renderOptions = () => {
     return options.map((option, index) => {
       return (
-        <div key={index} onClick={() => console.log(option.option)}>
+        <StyledUserOption
+          key={index}
+          onClick={() => console.log(option.option)}
+        >
           {option.option}
-        </div>
+        </StyledUserOption>
       );
     });
   };
