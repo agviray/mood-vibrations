@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import UserTextForm from './components/UserTextForm';
 import AiResponse from './components/AIResponse';
-import { StyledAppContainer } from './components/styles/App.styled';
+import { StyledAppContainer } from './components/styles/App.styled.js';
 
 const App = () => {
   const [aiResponse, setAiResponse] = useState({

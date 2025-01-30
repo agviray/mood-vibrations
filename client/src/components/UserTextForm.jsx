@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { StyledUserTextForm } from './styles/StyledUserTextForm.styled';
+import { StyledUserTextForm } from './styles/UserTextForm.styled.js';
 
 const UserInputForm = ({ onAiResponseChange }) => {
   const [userText, setUserText] = useState('');
