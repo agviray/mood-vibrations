@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import UserTextForm from './components/UserTextForm';
 import AiResponse from './components/AIResponse';
+import UserQuickOptions from './components/UserQuickOptions';
 import { StyledAppContainer } from './components/styles/App.styled.js';
 
 const App = () => {
@@ -25,7 +26,9 @@ const App = () => {
         <UserTextForm onAiResponseChange={onAiResponseChange} />
         {moodMessage && userMood ? (
           <AiResponse moodMessage={moodMessage} userMood={userMood} />
-        ) : null}
+        ) : (
+          <UserQuickOptions />
+        )}
       </div>
     </StyledAppContainer>
   );
