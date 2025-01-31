@@ -1,37 +1,49 @@
+import { useState, useEffect } from 'react';
 import {
   StyledUserQuickOptions,
   StyledUserOption,
 } from './styles/UserQuickOptions.styled';
 
 const options = [
-  { option: 'excited' },
-  { option: 'chill' },
-  { option: 'energetic' },
-  { option: 'studious' },
-  { option: 'romantic' },
-  { option: 'confused' },
-  { option: 'mysterious' },
-  { option: 'happy' },
-  { option: 'daring' },
-  { option: 'melancholic' },
-  { option: 'sneaky' },
-  { option: 'hopeful' },
-  { option: 'exhausted' },
-  { option: 'heartbroken' },
-  { option: 'focused' },
-  { option: 'aggressive' },
-  { option: 'indifferent' },
+  { text: 'excited' },
+  { text: 'chill' },
+  { text: 'energetic' },
+  { text: 'studious' },
+  { text: 'romantic' },
+  { text: 'confused' },
+  { text: 'mysterious' },
+  { text: 'happy' },
+  { text: 'daring' },
+  { text: 'melancholic' },
+  { text: 'sneaky' },
+  { text: 'hopeful' },
+  { text: 'exhausted' },
+  { text: 'heartbroken' },
+  { text: 'focused' },
+  { text: 'aggressive' },
+  { text: 'indifferent' },
 ];
 
 const UserQuickOptions = () => {
+  const [selectedOption, setSelectedOption] = useState('');
+
+  useEffect(() => {
+    // If user selected option, send option to AI for analysis.
+    console.log(selectedOption);
+  }, [selectedOption]);
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+  };
+
   const renderOptions = () => {
     return options.map((option, index) => {
       return (
         <StyledUserOption
           key={index}
-          onClick={() => console.log(option.option)}
+          onClick={() => handleOptionClick(option.text)}
         >
-          {option.option}
+          {option.text}
         </StyledUserOption>
       );
     });
