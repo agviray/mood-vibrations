@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledUserTextForm = styled.form`
+export const StyledUserPromptForm = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;

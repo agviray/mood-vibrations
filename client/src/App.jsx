@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import UserTextForm from './components/UserTextForm';
+import UserPromptForm from './components/UserPromptForm.jsx';
 import AiResponse from './components/AIResponse';
 import UserQuickOptions from './components/UserQuickOptions';
 import { StyledAppContainer } from './components/styles/App.styled.js';
@@ -21,7 +21,7 @@ const App = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/analyze-mood',
+        'http://localhost:3000/api/analyze-prompt',
         {
           userPrompt,
         }
@@ -46,7 +46,7 @@ const App = () => {
     <StyledAppContainer>
       <div>
         <h1>Mood Vibrations</h1>
-        <UserTextForm onAiResponseChange={onAiResponseChange} />
+        <UserPromptForm postUserPromptToAnalyze={postUserPromptToAnalyze} />
         {moodMessage && userMood ? (
           <AiResponse moodMessage={moodMessage} userMood={userMood} />
         ) : (
