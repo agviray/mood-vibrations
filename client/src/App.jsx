@@ -50,7 +50,7 @@ const App = () => {
         {moodMessage && userMood ? (
           <AiResponse moodMessage={moodMessage} userMood={userMood} />
         ) : (
-          <UserQuickOptions />
+          <UserQuickOptions postUserPromptToAnalyze={postUserPromptToAnalyze} />
         )}
       </div>
     </StyledAppContainer>

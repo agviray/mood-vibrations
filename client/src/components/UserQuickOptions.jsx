@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   StyledUserQuickOptions,
   StyledUserOption,
@@ -24,16 +24,9 @@ const options = [
   { text: 'indifferent' },
 ];
 
-const UserQuickOptions = () => {
-  const [selectedOption, setSelectedOption] = useState('');
-
-  useEffect(() => {
-    // If user selected option, send option to AI for analysis.
-    console.log(selectedOption);
-  }, [selectedOption]);
-
+const UserQuickOptions = ({ postUserPromptToAnalyze }) => {
   const handleOptionClick = (option) => {
-    setSelectedOption(option);
+    postUserPromptToAnalyze(option);
   };
 
   const renderOptions = () => {
@@ -54,6 +47,10 @@ const UserQuickOptions = () => {
       <div>{renderOptions()}</div>
     </StyledUserQuickOptions>
   );
+};
+
+UserQuickOptions.propTypes = {
+  postUserPromptToAnalyze: PropTypes.func.isRequired,
 };
 
 export default UserQuickOptions;
