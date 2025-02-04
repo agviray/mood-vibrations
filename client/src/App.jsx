@@ -21,7 +21,7 @@ const App = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/analyze-prompt',
+        'http://localhost:3000/api/prompt/analyze',
         {
           userPrompt,
         }
