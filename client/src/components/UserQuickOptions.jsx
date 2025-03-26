@@ -24,9 +24,9 @@ const options = [
   { text: 'indifferent' },
 ];
 
-const UserQuickOptions = ({ postUserPromptToAnalyze }) => {
+const UserQuickOptions = ({ postPrompt }) => {
   const handleOptionClick = (option) => {
-    postUserPromptToAnalyze(option);
+    postPrompt(option);
   };
 
   const renderOptions = () => {
@@ -50,7 +50,7 @@ const UserQuickOptions = ({ postUserPromptToAnalyze }) => {
 };
 
 UserQuickOptions.propTypes = {
-  postUserPromptToAnalyze: PropTypes.func.isRequired,
+  postPrompt: PropTypes.func.isRequired,
 };
 
 export default UserQuickOptions;

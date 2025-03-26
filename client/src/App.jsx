@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { postUserPromptToAnalyze } from './api/openai.js';
 import UserPromptForm from './components/UserPromptForm.jsx';
 import AiResponse from './components/AIResponse';
 import UserQuickOptions from './components/UserQuickOptions';
@@ -12,30 +12,22 @@ const App = () => {
   });
   const { moodMessage, userMood } = aiResponse;
 
-  const postUserPromptToAnalyze = async (prompt) => {
+  const postPrompt = async (prompt) => {
     const userPrompt = prompt;
 
     if (userPrompt === '') {
       return;
     }
 
-    try {
-      const response = await axios.post(
-        'http://localhost:3000/api/prompt/analyze',
-        {
-          userPrompt,
-        }
-      );
-      if (response.data && response.data.moodMessage && response.data.mood) {
-        onAiResponseChange(response.data);
-      }
-    } catch (error) {
-      console.error('Error analyzing mood:', error);
+    const response = await postUserPromptToAnalyze(prompt);
+    if (response.data && response.data.moodMessage && response.data.mood) {
+      onAiResponseChange(response.data);
     }
   };
 
   const onAiResponseChange = (aiResponseDetails) => {
     const { moodMessage, mood } = aiResponseDetails;
+
     setAiResponse({
       moodMessage: moodMessage,
       userMood: mood,
@@ -46,11 +38,11 @@ const App = () => {
     <StyledAppContainer>
       <div>
         <h1>Mood Vibrations</h1>
-        <UserPromptForm postUserPromptToAnalyze={postUserPromptToAnalyze} />
+        <UserPromptForm postPrompt={postPrompt} />
         {moodMessage && userMood ? (
           <AiResponse moodMessage={moodMessage} userMood={userMood} />
         ) : (
-          <UserQuickOptions postUserPromptToAnalyze={postUserPromptToAnalyze} />
+          <UserQuickOptions postPrompt={postPrompt} />
         )}
       </div>
     </StyledAppContainer>

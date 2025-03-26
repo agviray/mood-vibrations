@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { StyledUserPromptForm } from './styles/UserPromptForm.styled.js';
 
-const UserPromptForm = ({ postUserPromptToAnalyze }) => {
+const UserPromptForm = ({ postPrompt }) => {
   const [userText, setUserText] = useState('');
 
   const handleSubmit = async (event) => {
@@ -10,7 +10,7 @@ const UserPromptForm = ({ postUserPromptToAnalyze }) => {
     if (userText === '') {
       return;
     }
-    postUserPromptToAnalyze(userText);
+    postPrompt(userText);
   };
 
   return (
@@ -31,7 +31,7 @@ const UserPromptForm = ({ postUserPromptToAnalyze }) => {
 };
 
 UserPromptForm.propTypes = {
-  postUserPromptToAnalyze: PropTypes.func.isRequired,
+  postPrompt: PropTypes.func.isRequired,
 };
 
 export default UserPromptForm;
