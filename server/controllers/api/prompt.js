@@ -1,6 +1,6 @@
 const { analyze } = require('../../config/openai');
 
-const analyzeMood = async (req, res) => {
+const analyzePrompt = async (req, res) => {
   const { userPrompt } = req.body;
 
   try {
@@ -12,5 +12,5 @@ const analyzeMood = async (req, res) => {
 };
 
 module.exports = {
-  analyzeMood,
+  analyzePrompt,
 };
