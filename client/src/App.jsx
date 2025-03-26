@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { postUserPromptToAnalyze } from './api/openai.js';
+import { searchSongsByQuery } from './api/spotify.js';
 import UserPromptForm from './components/UserPromptForm.jsx';
 import AiResponse from './components/AIResponse';
 import UserQuickOptions from './components/UserQuickOptions';
@@ -12,6 +13,22 @@ const App = () => {
   });
   const { moodMessage, userMood } = aiResponse;
 
+  const getSongs = async (query) => {
+    const userQuery = query;
+    const response = await searchSongsByQuery(userQuery);
+
+    if (response.data && response.data.playlists) {
+      // TODO: Display playlists.
+      console.log(response.data.playlists);
+    }
+  };
+
+  useEffect(() => {
+    if (aiResponse.userMood !== '') {
+      getSongs(aiResponse.userMood);
+    }
+  }, [aiResponse.userMood]);
+
   const postPrompt = async (prompt) => {
     const userPrompt = prompt;
 
@@ -20,6 +37,7 @@ const App = () => {
     }
 
     const response = await postUserPromptToAnalyze(prompt);
+
     if (response.data && response.data.moodMessage && response.data.mood) {
       onAiResponseChange(response.data);
     }

@@ -20,7 +20,6 @@ const getSpotifyToken = async () => {
     return response.data.access_token;
   } catch (error) {
     console.error('Error getting Spotify token:', error);
-    return null;
   }
 };
 
