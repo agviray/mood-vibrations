@@ -18,7 +18,6 @@ const App = () => {
     const response = await searchSongsByQuery(userQuery);
 
     if (response.data && response.data.playlists) {
-      // TODO: Display playlists.
       console.log(response.data.playlists);
     }
   };
