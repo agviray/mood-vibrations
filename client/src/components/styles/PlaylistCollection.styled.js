@@ -2,7 +2,7 @@
 
 import styled from 'styled-components';
 
-export const StyledAiResponse = styled.div`
+export const StyledPlaylistCollection = styled.div`
   padding: 1.5rem;
 
   & > div {
