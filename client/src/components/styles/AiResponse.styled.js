@@ -3,7 +3,7 @@
 import styled from 'styled-components';
 
 export const StyledAiResponse = styled.div`
-  padding: 1.5rem;
+  padding: 1.5rem 0;
 
   & > div {
     padding-bottom: 1rem;
