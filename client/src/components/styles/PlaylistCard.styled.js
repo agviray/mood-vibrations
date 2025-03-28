@@ -10,10 +10,11 @@ export const StyledPlaylistCard = styled.div`
       flex-direction: row;
     }
 
-    // Playlist Image
+    // Playlist Image Wrapper
     & > div {
       & > span {
         display: inline-block;
+        width: 100%;
 
         & > img {
           width: 100%;
@@ -28,7 +29,7 @@ export const StyledPlaylistCard = styled.div`
       }
     }
 
-    // Playlist Details
+    // Playlist Details Wrapper
     & > div:nth-of-type(2) {
       display: flex;
       flex-direction: column;
