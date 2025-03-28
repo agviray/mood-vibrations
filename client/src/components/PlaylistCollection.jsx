@@ -32,7 +32,7 @@ const PlaylistCollection = ({ userMood }) => {
   };
 
   return userMood ? (
-    <StyledPlaylistCollection>
+    <StyledPlaylistCollection id="playlist-collection">
       <div>
         <h3>
           Playlists for feeling <em>{userMood}</em>

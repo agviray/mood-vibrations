@@ -15,7 +15,7 @@ const UserPromptForm = ({ postPrompt }) => {
 
   return (
     <>
-      <StyledUserPromptForm onSubmit={handleSubmit}>
+      <StyledUserPromptForm id="user-prompt-form" onSubmit={handleSubmit}>
         <textarea
           value={userText}
           onChange={(event) => setUserText(event.target.value)}

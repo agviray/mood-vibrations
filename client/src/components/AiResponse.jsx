@@ -3,7 +3,7 @@ import { StyledAiResponse } from './styles/AiResponse.styled';
 
 const AiResponse = ({ moodMessage, userMood }) => {
   return (
-    <StyledAiResponse>
+    <StyledAiResponse id="api-response">
       <div>
         <h3>AI Message</h3>
         <p>{moodMessage}</p>

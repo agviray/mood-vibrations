@@ -43,7 +43,7 @@ const UserQuickOptions = ({ postPrompt }) => {
   };
 
   return (
-    <StyledUserQuickOptions>
+    <StyledUserQuickOptions id="quick-options">
       <div>{renderOptions()}</div>
     </StyledUserQuickOptions>
   );
