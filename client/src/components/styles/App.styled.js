@@ -10,6 +10,7 @@ export const StyledAppContainer = styled.div`
     min-height: 100vh;
     flex-direction: column;
     justify-content: center;
+    padding: 2rem 0;
   }
   & h1 {
     padding-bottom: 2rem;

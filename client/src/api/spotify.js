@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const searchSongsByQuery = async (query) => {
+export const searchMusicByQuery = async (query) => {
   const userQuery = query;
 
   try {

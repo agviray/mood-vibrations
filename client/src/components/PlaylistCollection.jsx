@@ -1,26 +1,35 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { searchSongsByQuery } from '../api/spotify';
+import { searchMusicByQuery } from '../api/spotify';
+import PlaylistCard from './PlaylistCard';
 import { StyledPlaylistCollection } from './styles/PlaylistCollection.styled';
 
 const PlaylistCollection = ({ userMood }) => {
-  const getSongs = async (query) => {
-    const userQuery = query;
-    const response = await searchSongsByQuery(userQuery);
+  const [allPlaylists, setAllPlaylists] = useState([]);
 
+  const getMusic = async (query) => {
+    const response = await searchMusicByQuery(query);
+
+    // TODO: Allow user to get either playlists or tracks.
+    // TODO: Allow user to search genres (if possible).
+    // - Example: search 'chill' songs in the 'drum & bass' genre.
     if (response.data && response.data.playlists) {
-      /* TODO: Create PlaylistCard component. */
       /* TODO: Render each playlist in a PlaylistCard. */
-
-      console.log(response.data.playlists.items);
+      setAllPlaylists(response.data.playlists.items);
     }
   };
 
   useEffect(() => {
     if (userMood !== '') {
-      getSongs(userMood);
+      getMusic(userMood);
     }
   }, [userMood]);
+
+  const renderPlaylistsCards = (playlists) => {
+    return playlists.map((list) =>
+      list ? <PlaylistCard key={list.id} list={list} /> : null
+    );
+  };
 
   return userMood ? (
     <StyledPlaylistCollection>
@@ -28,7 +37,7 @@ const PlaylistCollection = ({ userMood }) => {
         <h3>
           Playlists for feeling <em>{userMood}</em>
         </h3>
-        {/* TODO: Display PlaylistCards here. */}
+        <div>{renderPlaylistsCards(allPlaylists)}</div>
       </div>
     </StyledPlaylistCollection>
   ) : null;
